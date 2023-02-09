@@ -5,7 +5,7 @@ import { Main } from './components/Videogame/Main';
 import { VideogameDetail } from './components/VideogameDetail/VideogameDetail';
 import axios from "axios"
 
-axios.defaults.baseURL = "http://localhost:3002"
+axios.defaults.baseURL = "https://deploy-pi-production-4388.up.railway.app/"
 
 function App() {
   return (
