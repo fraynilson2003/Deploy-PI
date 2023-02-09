@@ -35,14 +35,6 @@ let getAllGenerAPI = async()=>{
 let getAllGeners = async()=>{
  
     try {
-        /* DESACTIVADO MIENTRAS PROBAMOS FRONTED*/
-        // //API
-        // let genersAPI = await getAllGenerAPI()
-        // //Ponemos a la DATA BASE todos los generos
-        // let setPromise = genersAPI.map(ele => {
-        //     return  genre.create(ele)
-        // });
-        // await Promise.all(setPromise)
 
         //DATA BASE
         let genersDataBase = await genre.findAll()
@@ -59,6 +51,22 @@ let getAllGeners = async()=>{
     }
   
 }
+
+let getAllGenersAPI = async()=>{
+           /* DESACTIVADO MIENTRAS PROBAMOS FRONTED*/
+        // //API
+        try {
+            let genersAPI = await getAllGenerAPI()
+            //Ponemos a la DATA BASE todos los generos
+            let setPromise = genersAPI.map(ele => {
+                return  genre.create(ele)
+            });
+            await Promise.all(setPromise)   
+        } catch (error) {
+            throw Error(error)
+        }
+
+}
 /************************ POST  ***********************/
 let createGener = async(name)=>{
     if(!name) throw Error("Mising data")
@@ -70,7 +78,8 @@ let createGener = async(name)=>{
 
 module.exports = {
     createGener,
-    getAllGeners
+    getAllGeners,
+    getAllGenersAPI
 
 }
 

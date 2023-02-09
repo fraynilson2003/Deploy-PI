@@ -4,7 +4,8 @@ const {Op} = require("sequelize")
 let {
     getAllGeners,
     createGener,
-    createVideogameGener
+    createVideogameGener,
+    getAllGenersAPI
 } = require("../../controllers/generControllers")
 
 let ERROR_FOUNT = 404
@@ -16,6 +17,17 @@ generRouter.get("/", async(req,res)=>{
     let geners
     try {
         geners = await getAllGeners()
+         res.status(200).json(geners)
+
+    } catch (error) {
+        res.status(ERROR_FOUNT).json({error: error.message})
+    }
+})
+
+generRouter.get("/api", async(req,res)=>{
+    let geners
+    try {
+        geners = await getAllGenersAPI()
          res.status(200).json(geners)
 
     } catch (error) {

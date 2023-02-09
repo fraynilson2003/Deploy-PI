@@ -24,6 +24,17 @@ plataformRouter.get("/", async(req,res)=>{
         res.status(ERROR_FOUNT).json({error: error.message})
     }
 })
+
+plataformRouter.get("/api", async(req,res)=>{
+    let platform
+    try {
+        platform = await getAllPlatformAPI()
+        res.status(200).json(platform)
+
+    } catch (error) {
+        res.status(ERROR_FOUNT).json({error: error.message})
+    }
+})
 /*************** POST ***********************/
 plataformRouter.post("/", async(req,res)=>{
     let {name, slug} = req.body
