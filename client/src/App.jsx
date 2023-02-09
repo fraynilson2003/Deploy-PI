@@ -3,6 +3,9 @@ import "./App.css"
 import { Portada } from './components/home/Portada';
 import { Main } from './components/Videogame/Main';
 import { VideogameDetail } from './components/VideogameDetail/VideogameDetail';
+import axios from "axios"
+
+axios.defaults.baseURL = "http://localhost:3002"
 
 function App() {
   return (

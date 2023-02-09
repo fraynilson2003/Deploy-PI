@@ -73,7 +73,7 @@ export let postRegisterVideogame = (statement)=>async(dispatch)=>{
     console.log(/*/////////*/);
     console.log(newVidGame);
 
-    let result = await axios.post("http://localhost:3002/videogames", newVidGame)
+    let result = await axios.post("/videogames", newVidGame)
 
     if(result.status == 200){
       console.log(result.status);
@@ -105,7 +105,7 @@ export let putStateRegister = (active)=>{
 /* GET */
 export let getNameVideogame = (name)=>async(dispatch)=>{
   try {
-    let result = await axios.get(`http://localhost:3002/videogames?name=${name}`)
+    let result = await axios.get(`/videogames?name=${name}`)
     let res = result.data
 
     return dispatch({type: GET_NAME_VIDEOGAME, payload:res})
@@ -116,7 +116,7 @@ export let getNameVideogame = (name)=>async(dispatch)=>{
 
 export let getVideogameByID = (id)=> async(dispatch)=>{
   try {
-    let result = await axios.get(`http://localhost:3002/videogames/${id}`)
+    let result = await axios.get(`/videogames/${id}`)
 
 
     return dispatch({type: GET_ID_VIDEOGAME, payload:result.data})
@@ -127,7 +127,7 @@ export let getVideogameByID = (id)=> async(dispatch)=>{
 
 export let getAllVideogames = ()=> async(dispatch)=>{
   try {
-    let result = await axios.get(`http://localhost:3002/videogames`)
+    let result = await axios.get(`/videogames`)
     console.log(result.data.length);
 
     let res = ordenadorABC(result.data, "a - z")
@@ -140,7 +140,7 @@ export let getAllVideogames = ()=> async(dispatch)=>{
 
 export let getAllGeners = ()=> async(dispatch)=>{
   try {
-    let result = await axios.get("http://localhost:3002/genres")
+    let result = await axios.get("/genres")
 
     let res =  result.data.sort((a, b) => {
       if (a.name < b.name) {
@@ -165,7 +165,7 @@ export let getAllGeners = ()=> async(dispatch)=>{
 
 export let getAllPlatforms = () => async(dispatch)=>{
   try {
-    let result = await axios.get(`http://localhost:3002/plataform`)
+    let result = await axios.get(`/plataform`)
 
     /*let res = ordenadorABC(result.data, "a - z")*/
 
